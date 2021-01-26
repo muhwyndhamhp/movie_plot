@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="userName"
             type="java.lang.String" />
+
+        <variable
+            name="hasFavourite"
+            type="java.lang.Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +25,7 @@
         <include
             android:id="@+id/layout_toolbar"
             layout="@layout/layout_toolbar"
-            app:userName="@{userName}"
-            />
+            app:userName="@{userName}" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -35,7 +41,7 @@
                 app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
 
                 <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tv_title_popular"
                     style="@style/TextLatoRegular"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
@@ -50,9 +56,52 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_popular"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tv_title_favourite"
+                    style="@style/TextLatoRegular"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/favourited_movies"
+                    android:textColor="@color/title_color"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:visibility="@{hasFavourite == true ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_favourite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:visibility="@{hasFavourite == true ? View.VISIBLE : View.GONE}" />
+
+                <TextView
+                    android:id="@+id/tv_title_upcoming"
+                    style="@style/TextLatoRegular"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/upcoming_movies"
+                    android:textColor="@color/title_color"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_upcoming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp" />
+
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 

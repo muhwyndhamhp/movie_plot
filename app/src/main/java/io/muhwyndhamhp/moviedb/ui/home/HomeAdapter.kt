@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.moviedb.data.model.Movie
 import io.muhwyndhamhp.moviedb.databinding.ItemPopularMovieBinding
+import io.muhwyndhamhp.moviedb.databinding.ItemUpcomingBinding
 
 class HomeAdapter(
     val movieList: MutableList<Movie>,
@@ -23,6 +24,13 @@ class HomeAdapter(
         override fun bindItem(movie: Movie, position: Int) {
             itemPopularMovieBinding.movie = movie
         }
+    }
+
+    class UpcomingViewHolder(private val itemUpcomingBinding: ItemUpcomingBinding) :
+        BaseViewHolder(itemUpcomingBinding.root) {
+        override fun bindItem(movie: Movie, position: Int) {
+            itemUpcomingBinding.movie = movie
+        }
 
     }
 
@@ -34,6 +42,14 @@ class HomeAdapter(
                 DataBindingUtil.inflate(
                     layoutInflater,
                     R.layout.item_popular_movie,
+                    parent,
+                    false
+                )
+            )
+            1 -> UpcomingViewHolder(
+                DataBindingUtil.inflate(
+                    layoutInflater,
+                    R.layout.item_upcoming,
                     parent,
                     false
                 )

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import io.muhwyndhamhp.moviedb.R
@@ -19,6 +20,8 @@ class HomeFragment : BaseFragment() {
     val movieViewModel: MovieViewModel by viewModel()
 
     lateinit var popularAdapter: HomeAdapter
+    lateinit var favouriteAdapter: HomeAdapter
+    lateinit var upcomingAdapter: HomeAdapter
 
     lateinit var pagerDecorator: PagerDecorator
 
@@ -37,6 +40,7 @@ class HomeFragment : BaseFragment() {
         prepareRecyclerView()
         prepareObservers()
         movieViewModel.getPopular()
+        movieViewModel.getUpcoming()
     }
 
     private fun prepareObservers() {
@@ -47,6 +51,10 @@ class HomeFragment : BaseFragment() {
             )
             pagerDecorator = PagerDecorator(it.size, context)
             binding.rvPopular.addItemDecoration(pagerDecorator)
+        })
+
+        movieViewModel.upcomingMovies.observe(viewLifecycleOwner, {
+            upcomingAdapter.addItem(it)
         })
 
         mainViewModel.userName.observe(viewLifecycleOwner, {
@@ -61,10 +69,21 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         }
         PagerSnapHelper().attachToRecyclerView(binding.rvPopular)
+
+        binding.rvUpcoming.apply {
+            adapter = upcomingAdapter
+            layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+        }
+
     }
 
     private fun prepareAdapter() {
         popularAdapter = HomeAdapter(mutableListOf(), 0) {
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_homeFragment_to_movieDetailFragment)
+        }
+
+        upcomingAdapter = HomeAdapter(mutableListOf(), 1) {
             Navigation.findNavController(binding.root)
                 .navigate(R.id.action_homeFragment_to_movieDetailFragment)
         }
