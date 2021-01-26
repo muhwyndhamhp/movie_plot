@@ -13,7 +13,11 @@ class AppRepository(
 
 
     fun getPopularMovies(apiKey: String, page: Int) =
-        flow { emit(Result.success(tmdbApi.getPopularMovies(apiKey, page))) }
+        flow {
+            emit(Result.success(
+                tmdbApi.getPopularMovies(apiKey, page))
+            )
+        }
             .catch { emit(Result.failure(it)) }
 
     fun getUpcomingMovies(apiKey: String, page: Int) =

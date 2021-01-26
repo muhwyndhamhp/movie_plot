@@ -3,6 +3,7 @@ package io.muhwyndhamhp.moviedb.util
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 
 object Extension {
@@ -24,7 +25,8 @@ object Extension {
                     }
                     p0.length < 6 || !p0.checkHasUppercase() -> {
                         isValid = false
-                        reason = "Your nickname must at least:\n - 6 characters\n - 1 capital letter"
+                        reason =
+                            "Your nickname must at least:\n - 6 characters\n - 1 capital letter"
                     }
                 }
 
@@ -38,10 +40,19 @@ object Extension {
         this.setOnKeyListener { _, keyCode, keyEvent ->
             // If the event is a key-down event on the "enter" button
             if ((keyEvent.action == KeyEvent.ACTION_DOWN) &&
-                (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                // Perform action on key press
+                (keyCode == KeyEvent.KEYCODE_ENTER)
+            ) {
                 listener.invoke()
-                return@setOnKeyListener true
+                return@setOnKeyListener false
+            }
+            false
+
+        }
+
+        this.setOnEditorActionListener { textView, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                listener.invoke()
+                return@setOnEditorActionListener false
             }
             false
 

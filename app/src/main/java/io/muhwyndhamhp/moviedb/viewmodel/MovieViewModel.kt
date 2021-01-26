@@ -27,7 +27,7 @@ class MovieViewModel(private val appRepository: AppRepository) : ViewModel() {
         try {
             viewModelScope.launch {
                 appRepository.getPopularMovies(BuildConfig.TMDB_API_KEY, 1).collect {
-                    if (it.isSuccess) popularMovies.postValue(it.getOrNull()?.results)
+                    if (it.isSuccess) popularMovies.postValue(it.getOrNull()?.results?.take(6))
                     else error.postValue(
                         it.exceptionOrNull()?.message ?: it.exceptionOrNull()?.localizedMessage
                         ?: "General Error"
