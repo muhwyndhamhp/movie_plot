@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "io.muhwyndhamhp.moviedb"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "TMDB_API_KEY", tmdbApiKey)
+    }
+
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation Deps.stdLibs
+    implementation Deps.androidxCore
+    implementation Deps.appCompat
+    implementation Deps.material
+    implementation Deps.constraintLayout
+
+
+    implementation Deps.koin
+    implementation Deps.koinLifecycle
+    implementation Deps.koinViewModel
+
+    implementation Deps.retrofit
+    implementation Deps.gson
+    implementation Deps.retrofitGsonConverter
+
+    implementation Deps.jetpackNavigationUI
+    implementation Deps.jetpackNavigationFragment
+
+    implementation Deps.liveData
+    implementation Deps.room
+    implementation Deps.roomRuntime
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt Deps.roomKapt
+
+    implementation Deps.glide
+    kapt Deps.glideKapt
+
+    testImplementation Deps.jUnit
+    androidTestImplementation Deps.jUnitTest
+    androidTestImplementation Deps.espresso
+}
