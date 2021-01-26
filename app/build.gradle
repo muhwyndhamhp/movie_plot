@@ -10,6 +10,9 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    def Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
     defaultConfig {
         applicationId "io.muhwyndhamhp.moviedb"
         minSdkVersion 21
@@ -19,7 +22,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "TMDB_API_KEY", tmdbApiKey)
+        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
     }
 
     buildFeatures {
