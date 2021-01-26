@@ -11,7 +11,7 @@ import io.muhwyndhamhp.moviedb.databinding.ItemPopularMovieBinding
 import io.muhwyndhamhp.moviedb.databinding.ItemUpcomingBinding
 
 class HomeAdapter(
-    val movieList: MutableList<Movie>,
+    private var movieList: MutableList<Movie>,
     private val itemViewType: Int,
     private val clickListener: (Movie) -> Unit
 ) : RecyclerView.Adapter<HomeAdapter.BaseViewHolder>() {
@@ -79,10 +79,14 @@ class HomeAdapter(
         return itemViewType
     }
 
-    fun addItem(addedBeerList: List<Movie>): List<Movie> {
+    fun addItem(addedMovies: List<Movie>){
         val a = movieList.size
-        movieList.addAll(addedBeerList)
+        movieList.addAll(addedMovies)
         notifyItemRangeInserted(a, movieList.size - 1)
-        return movieList
+    }
+
+    fun updateItem(updatedList: List<Movie>) {
+        movieList = updatedList as MutableList<Movie>
+        notifyDataSetChanged()
     }
 }

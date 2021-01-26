@@ -47,7 +47,7 @@ class HomeFragment : BaseFragment() {
 
     private fun prepareObservers() {
         movieViewModel.popularMovies.observe(viewLifecycleOwner, {
-            popularAdapter.addItem(it)
+            popularAdapter.updateItem(it)
             if (::pagerDecorator.isInitialized) binding.rvPopular.removeItemDecoration(
                 pagerDecorator
             )
@@ -57,7 +57,7 @@ class HomeFragment : BaseFragment() {
         })
 
         movieViewModel.upcomingMovies.observe(viewLifecycleOwner, {
-            upcomingAdapter.addItem(it)
+            upcomingAdapter.updateItem(it)
             mainViewModel.loading.postValue(false)
         })
 
