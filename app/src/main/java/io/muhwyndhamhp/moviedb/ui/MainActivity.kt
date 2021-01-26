@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import io.muhwyndhamhp.moviedb.base.MainViewModel
+import io.muhwyndhamhp.moviedb.viewmodel.MainViewModel
 import io.muhwyndhamhp.moviedb.databinding.ActivityMainBinding
 import io.muhwyndhamhp.moviedb.util.Constants.USER_NAME_KEY
 import io.muhwyndhamhp.moviedb.util.Constants.USER_PREF

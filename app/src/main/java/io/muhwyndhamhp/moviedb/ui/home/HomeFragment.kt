@@ -48,6 +48,10 @@ class HomeFragment : BaseFragment() {
             pagerDecorator = PagerDecorator(it.size, context)
             binding.rvPopular.addItemDecoration(pagerDecorator)
         })
+
+        mainViewModel.userName.observe(viewLifecycleOwner, {
+            binding.userName = it
+        })
     }
 
     private fun prepareRecyclerView() {
