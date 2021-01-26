@@ -23,6 +23,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
+        buildConfigField("String", "TMDB_ASSET_BASE_URL", imageBaseUrl)
+        buildConfigField("String", "TMDB_BASE_URL", baseUrl)
     }
 
     buildFeatures {
