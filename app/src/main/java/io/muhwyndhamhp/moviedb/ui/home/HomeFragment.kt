@@ -53,14 +53,24 @@ class HomeFragment : BaseFragment() {
             )
             pagerDecorator = PagerDecorator(it.size, context)
             binding.rvPopular.addItemDecoration(pagerDecorator)
+            mainViewModel.loading.postValue(false)
         })
 
         movieViewModel.upcomingMovies.observe(viewLifecycleOwner, {
             upcomingAdapter.addItem(it)
+            mainViewModel.loading.postValue(false)
         })
 
         mainViewModel.userName.observe(viewLifecycleOwner, {
             binding.userName = it
+        })
+
+        movieViewModel.loading.observe(viewLifecycleOwner, {
+            mainViewModel.loading.postValue(it)
+        })
+
+        movieViewModel.error.observe(viewLifecycleOwner, {
+            mainViewModel.error.postValue(it)
         })
     }
 

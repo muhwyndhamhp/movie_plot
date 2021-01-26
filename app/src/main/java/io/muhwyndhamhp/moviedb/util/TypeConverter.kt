@@ -9,7 +9,7 @@ object TypeConverter {
     @TypeConverter
     @JvmStatic
     fun stringToIntList(data: String): List<Int> =
-        Gson().fromJson<List<Int>>(data, object : TypeToken<List<Int>>() {}.type)
+        Gson().fromJson(data, object : TypeToken<List<Int>>() {}.type)
 
     @TypeConverter
     @JvmStatic

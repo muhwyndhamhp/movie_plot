@@ -1,11 +1,13 @@
 package io.muhwyndhamhp.moviedb.ui.splash
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import io.muhwyndhamhp.moviedb.BuildConfig
 import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentSplashBinding
@@ -23,9 +25,12 @@ class SplashFragment : BaseFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        binding.tvVersion.text = "Version ${BuildConfig.VERSION_NAME}"
         Handler().postDelayed({
             val navController = Navigation.findNavController(binding.root)
             mainViewModel.userName.observe(viewLifecycleOwner, {

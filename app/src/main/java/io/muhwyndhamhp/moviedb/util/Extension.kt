@@ -49,7 +49,7 @@ object Extension {
 
         }
 
-        this.setOnEditorActionListener { textView, actionId, keyEvent ->
+        this.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 listener.invoke()
                 return@setOnEditorActionListener false
