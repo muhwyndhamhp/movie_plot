@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
+@Suppress("DEPRECATED_ANNOTATION")
 @Parcelize
 @Entity(tableName = "table_favourite_movies")
 data class Movie (
@@ -23,5 +24,7 @@ data class Movie (
     var popularity: Double? = 0.0,
     var vote_count: Int? = 0,
     var vote_average: Double? = 0.0,
-    var video: Boolean? = false
+    var video: Boolean? = false,
+    var imdb_id: String? = "",
+    var tagline: String? = ""
 ): Parcelable

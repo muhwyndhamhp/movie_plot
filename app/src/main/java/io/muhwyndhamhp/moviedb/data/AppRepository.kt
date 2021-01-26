@@ -14,8 +14,10 @@ class AppRepository(
 
     fun getPopularMovies(apiKey: String, page: Int) =
         flow {
-            emit(Result.success(
-                tmdbApi.getPopularMovies(apiKey, page))
+            emit(
+                Result.success(
+                    tmdbApi.getPopularMovies(apiKey, page)
+                )
             )
         }.catch { emit(Result.failure(it)) }
 
@@ -27,6 +29,9 @@ class AppRepository(
         flow { emit(Result.success(tmdbApi.getMovieReviews(movieId, apiKey, page))) }
             .catch { emit(Result.failure(it)) }
 
+    fun getMovieDetail(movieId: Int, apiKey: String) =
+        flow { emit(Result.success(tmdbApi.getMovieDetails(movieId, apiKey))) }
+            .catch { emit(Result.failure(it)) }
 
     fun getFavouriteMovies() = movieDao.getAllMovies()
 

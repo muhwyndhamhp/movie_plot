@@ -9,6 +9,8 @@ import kotlinx.coroutines.launch
 
 class MovieViewModel(private val appRepository: AppRepository) : ViewModel() {
 
+    val currentMovie = MutableLiveData<Movie>()
+
     val popularMovies = MutableLiveData<List<Movie>>()
 
     val upcomingMovies = MutableLiveData<List<Movie>>()
@@ -45,6 +47,24 @@ class MovieViewModel(private val appRepository: AppRepository) : ViewModel() {
             viewModelScope.launch {
                 appRepository.getUpcomingMovies(BuildConfig.TMDB_API_KEY, 1).collect {
                     if (it.isSuccess) upcomingMovies.postValue(it.getOrNull()?.results)
+                    else error.postValue(
+                        it.exceptionOrNull()?.message ?: it.exceptionOrNull()?.localizedMessage
+                        ?: "General Error"
+                    )
+                }
+            }
+        } catch (e: Exception) {
+            error.postValue(e.message ?: e.localizedMessage ?: "General Error")
+        }
+    }
+
+    fun getDetails(movie: Movie) {
+        currentMovie.postValue(movie)
+        loading.postValue(true)
+        try {
+            viewModelScope.launch {
+                appRepository.getMovieDetail(movie.id, BuildConfig.TMDB_API_KEY).collect {
+                    if (it.isSuccess) currentMovie.postValue(it.getOrNull() ?: currentMovie.value)
                     else error.postValue(
                         it.exceptionOrNull()?.message ?: it.exceptionOrNull()?.localizedMessage
                         ?: "General Error"

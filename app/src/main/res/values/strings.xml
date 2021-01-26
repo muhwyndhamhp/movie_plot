@@ -7,4 +7,8 @@
     <string name="good_evening">Good Evening,</string>
     <string name="favourited_movies">Favourite Movies</string>
     <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="description">Description:</string>
+    <string name="vote">Vote:</string>
+    <string name="imdb_id">IMDB ID:</string>
+    <string name="movie_poster">Movie Poster</string>
 </resources>

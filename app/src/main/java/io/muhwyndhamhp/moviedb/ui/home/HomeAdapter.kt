@@ -79,13 +79,14 @@ class HomeAdapter(
         return itemViewType
     }
 
-    fun addItem(addedMovies: List<Movie>){
+    fun addItem(addedMovies: List<Movie>) {
         val a = movieList.size
         movieList.addAll(addedMovies)
         notifyItemRangeInserted(a, movieList.size - 1)
     }
 
     fun updateItem(updatedList: List<Movie>) {
+        if (!movieList.isNullOrEmpty() && updatedList[0].id == movieList[0].id) return
         movieList = updatedList as MutableList<Movie>
         notifyDataSetChanged()
     }

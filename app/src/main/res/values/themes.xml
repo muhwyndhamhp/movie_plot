@@ -16,13 +16,19 @@
 
     <style name="TextBerkshireStyle" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/berkshireswash_regular</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/title_color</item>
         <item name="android:textSize">79sp</item>
     </style>
 
     <style name="TextLatoRegular" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/lato_regular</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/title_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextCardoItalic" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/cardo_italic</item>
+        <item name="android:textColor">@color/title_color</item>
         <item name="android:textSize">14sp</item>
     </style>
 
