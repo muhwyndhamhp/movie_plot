@@ -26,6 +26,7 @@ object Versions {
     const val jetpack_navigation = "2.3.2"
 
     const val j_unit = "4.+"
+    const val legacy_support = "1.0.0"
 }
 
 object Deps {
@@ -77,5 +78,9 @@ object Deps {
 
     //Espresso
     const val espresso = "androidx.test.espresso:espresso-core:3.3.0"
+
+    //Legacy support
+
+    const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacy_support}"
 
 }
