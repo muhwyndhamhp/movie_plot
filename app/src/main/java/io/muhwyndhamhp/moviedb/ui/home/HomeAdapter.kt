@@ -16,22 +16,26 @@ class HomeAdapter(
     private val clickListener: (Movie) -> Unit
 ) : RecyclerView.Adapter<HomeAdapter.BaseViewHolder>() {
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        abstract fun bindItem(movie: Movie, position: Int)
+        abstract fun bindItem(movie: Movie, position: Int, clickListener: (Movie) -> Unit)
     }
 
     class PopularViewHolder(private val itemPopularMovieBinding: ItemPopularMovieBinding) :
         BaseViewHolder(itemPopularMovieBinding.root) {
-        override fun bindItem(movie: Movie, position: Int) {
+        override fun bindItem(movie: Movie, position: Int, clickListener: (Movie) -> Unit) {
             itemPopularMovieBinding.movie = movie
+            itemPopularMovieBinding.root.setOnClickListener { clickListener.invoke(movie) }
         }
     }
 
     class UpcomingViewHolder(private val itemUpcomingBinding: ItemUpcomingBinding) :
         BaseViewHolder(itemUpcomingBinding.root) {
-        override fun bindItem(movie: Movie, position: Int) {
+        override fun bindItem(movie: Movie, position: Int, clickListener: (Movie) -> Unit) {
             itemUpcomingBinding.movie = movie
-        }
+            itemUpcomingBinding.root.setOnClickListener {
+                clickListener.invoke(movie)
+            }
 
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -66,7 +70,7 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bindItem(movieList[position], position)
+        holder.bindItem(movieList[position], position, clickListener)
     }
 
     override fun getItemCount() = movieList.size

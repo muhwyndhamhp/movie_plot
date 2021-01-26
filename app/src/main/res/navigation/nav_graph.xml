@@ -9,23 +9,23 @@
         android:id="@+id/splashFragment"
         android:name="io.muhwyndhamhp.moviedb.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_onboardingFragment"
-            app:popUpToInclusive="true"
+            app:destination="@id/onboardingFragment"
             app:popUpTo="@id/splashFragment"
-            app:destination="@id/onboardingFragment" />
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
-            app:popUpToInclusive="true"
+            app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
-            app:destination="@id/homeFragment" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="io.muhwyndhamhp.moviedb.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
@@ -34,16 +34,20 @@
         android:id="@+id/onboardingFragment"
         android:name="io.muhwyndhamhp.moviedb.ui.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
-        tools:layout="@layout/fragment_onboarding" >
+        tools:layout="@layout/fragment_onboarding">
         <action
             android:id="@+id/action_onboardingFragment_to_homeFragment"
-            app:popUpToInclusive="true"
+            app:destination="@id/homeFragment"
             app:popUpTo="@id/onboardingFragment"
-            app:destination="@id/homeFragment" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="io.muhwyndhamhp.moviedb.ui.detail.MovieDetailFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movie"
+            app:argType="io.muhwyndhamhp.moviedb.data.model.Movie" />
+    </fragment>
 </navigation>

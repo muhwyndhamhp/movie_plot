@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentHomeBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
@@ -17,13 +17,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : BaseFragment() {
     lateinit var binding: FragmentHomeBinding
 
-    val movieViewModel: MovieViewModel by viewModel()
+    private val movieViewModel: MovieViewModel by viewModel()
 
     lateinit var popularAdapter: HomeAdapter
     lateinit var favouriteAdapter: HomeAdapter
     lateinit var upcomingAdapter: HomeAdapter
 
-    lateinit var pagerDecorator: PagerDecorator
+    private lateinit var navController: NavController
+    private lateinit var pagerDecorator: PagerDecorator
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +40,7 @@ class HomeFragment : BaseFragment() {
 
         prepareRecyclerView()
         prepareObservers()
+        navController = Navigation.findNavController(binding.root)
         movieViewModel.getPopular()
         movieViewModel.getUpcoming()
     }
@@ -79,13 +81,11 @@ class HomeFragment : BaseFragment() {
 
     private fun prepareAdapter() {
         popularAdapter = HomeAdapter(mutableListOf(), 0) {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_homeFragment_to_movieDetailFragment)
+            navController.navigate(HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(it))
         }
 
         upcomingAdapter = HomeAdapter(mutableListOf(), 1) {
-            Navigation.findNavController(binding.root)
-                .navigate(R.id.action_homeFragment_to_movieDetailFragment)
+            navController.navigate(HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(it))
         }
     }
 }
