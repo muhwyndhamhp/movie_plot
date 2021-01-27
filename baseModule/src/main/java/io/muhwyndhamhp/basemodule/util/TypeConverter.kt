@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.util
+package io.muhwyndhamhp.basemodule.util
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

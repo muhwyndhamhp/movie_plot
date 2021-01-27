@@ -1,7 +1,7 @@
-package io.muhwyndhamhp.moviedb.network
+package io.muhwyndhamhp.basemodule.network
 
-import io.muhwyndhamhp.moviedb.data.model.Movie
-import io.muhwyndhamhp.moviedb.data.model.Review
+import io.muhwyndhamhp.basemodule.data.model.Movie
+import io.muhwyndhamhp.basemodule.data.model.Review
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

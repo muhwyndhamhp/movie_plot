@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.data.model.Movie
+import io.muhwyndhamhp.basemodule.data.model.Movie
 import io.muhwyndhamhp.moviedb.databinding.ItemFavouriteBinding
 import io.muhwyndhamhp.moviedb.databinding.ItemPopularMovieBinding
 import io.muhwyndhamhp.moviedb.databinding.ItemUpcomingBinding

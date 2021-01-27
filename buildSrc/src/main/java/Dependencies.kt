@@ -17,7 +17,7 @@ object Versions {
 
     const val glide = "4.11.0"
 
-    const val room = "2.2.6"
+    const val room = "2.3.0-alpha04"
 
     const val retrofit = "2.9.0"
     const val gson = "2.8.6"

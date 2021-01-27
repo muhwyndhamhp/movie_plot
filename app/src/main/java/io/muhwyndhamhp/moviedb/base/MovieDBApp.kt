@@ -1,9 +1,9 @@
 package io.muhwyndhamhp.moviedb.base
 
 import android.app.Application
-import io.muhwyndhamhp.moviedb.data.AppRepository
-import io.muhwyndhamhp.moviedb.local.LocalModule
-import io.muhwyndhamhp.moviedb.network.NetworkModule
+import io.muhwyndhamhp.basemodule.data.AppRepository
+import io.muhwyndhamhp.basemodule.local.LocalModule
+import io.muhwyndhamhp.basemodule.network.NetworkModule
 import io.muhwyndhamhp.moviedb.viewmodel.ViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

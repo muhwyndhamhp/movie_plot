@@ -48,6 +48,6 @@
         tools:layout="@layout/fragment_movie_detail">
         <argument
             android:name="movie"
-            app:argType="io.muhwyndhamhp.moviedb.data.model.Movie" />
+            app:argType="io.muhwyndhamhp.basemodule.data.model.Movie" />
     </fragment>
 </navigation>

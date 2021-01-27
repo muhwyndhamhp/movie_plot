@@ -1,11 +1,11 @@
-package io.muhwyndhamhp.moviedb.local.dao
+package io.muhwyndhamhp.basemodule.local.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import io.muhwyndhamhp.moviedb.data.model.Movie
+import io.muhwyndhamhp.basemodule.data.model.Movie
 
 @Dao
 interface MovieDao {

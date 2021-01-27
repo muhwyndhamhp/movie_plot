@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.data.model
+package io.muhwyndhamhp.basemodule.data.model
 
 import android.os.Parcelable
 import androidx.room.Entity

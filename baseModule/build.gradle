@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode Versions.versionCode
+        versionName Versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
+        buildConfigField("String", "TMDB_ASSET_BASE_URL", imageBaseUrl)
+        buildConfigField("String", "TMDB_BASE_URL", baseUrl)
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    configurations.all {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
+    }
+
+}
+
+dependencies {
+
+    implementation Deps.stdLibs
+    implementation Deps.androidxCore
+
+    implementation Deps.koin
+    implementation Deps.koinViewModel
+    implementation Deps.koinLifecycle
+
+    implementation Deps.room
+    implementation Deps.roomRuntime
+    kapt Deps.roomKapt
+
+    implementation Deps.retrofit
+    implementation Deps.retrofitGsonConverter
+    implementation Deps.gson
+
+    testImplementation Deps.jUnit
+    androidTestImplementation Deps.jUnitTest
+    androidTestImplementation Deps.espresso
+}

@@ -45,9 +45,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    configurations.all {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
+    }
+
 }
 
 dependencies {
+
+    implementation project(':baseModule')
 
     implementation Deps.stdLibs
     implementation Deps.androidxCore
@@ -55,23 +63,15 @@ dependencies {
     implementation Deps.material
     implementation Deps.constraintLayout
 
-
     implementation Deps.koin
     implementation Deps.koinLifecycle
     implementation Deps.koinViewModel
-
-    implementation Deps.retrofit
-    implementation Deps.gson
-    implementation Deps.retrofitGsonConverter
 
     implementation Deps.jetpackNavigationUI
     implementation Deps.jetpackNavigationFragment
 
     implementation Deps.liveData
-    implementation Deps.room
-    implementation Deps.roomRuntime
     implementation Deps.legacySupport
-    kapt Deps.roomKapt
 
     implementation Deps.glide
     kapt Deps.glideKapt

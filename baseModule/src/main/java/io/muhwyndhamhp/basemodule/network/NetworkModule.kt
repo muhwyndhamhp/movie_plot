@@ -1,6 +1,6 @@
-package io.muhwyndhamhp.moviedb.network
+package io.muhwyndhamhp.basemodule.network
 
-import io.muhwyndhamhp.moviedb.BuildConfig
+import io.muhwyndhamhp.basemodule.BuildConfig
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

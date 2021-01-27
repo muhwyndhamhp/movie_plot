@@ -2,8 +2,8 @@ package io.muhwyndhamhp.moviedb.viewmodel
 
 import androidx.lifecycle.*
 import io.muhwyndhamhp.moviedb.BuildConfig
-import io.muhwyndhamhp.moviedb.data.AppRepository
-import io.muhwyndhamhp.moviedb.data.model.Movie
+import io.muhwyndhamhp.basemodule.data.AppRepository
+import io.muhwyndhamhp.basemodule.data.model.Movie
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -28,13 +28,11 @@ class MovieViewModel(private val appRepository: AppRepository) : ViewModel() {
         loading.postValue(true)
         try {
             viewModelScope.launch {
-                appRepository.getPopularMovies(BuildConfig.TMDB_API_KEY, 1).collect {
-                    if (it.isSuccess) popularMovies.postValue(it.getOrNull()?.results?.take(6))
-                    else error.postValue(
-                        it.exceptionOrNull()?.message ?: it.exceptionOrNull()?.localizedMessage
-                        ?: "General Error"
-                    )
-                }
+                appRepository.getPopularMovies(BuildConfig.TMDB_API_KEY, 1).collect { if (it.isSuccess) popularMovies.postValue(it.getOrNull()?.results?.take(6))
+                else error.postValue(
+                    it.exceptionOrNull()?.message ?: it.exceptionOrNull()?.localizedMessage
+                    ?: "General Error"
+                ) }
             }
         } catch (e: Exception) {
             error.postValue(e.message ?: e.localizedMessage ?: "General Error")

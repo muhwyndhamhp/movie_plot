@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.local
+package io.muhwyndhamhp.basemodule.local
 
 import android.app.Application
 import androidx.room.Room

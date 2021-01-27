@@ -3,11 +3,12 @@ package io.muhwyndhamhp.moviedb.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import io.muhwyndhamhp.basemodule.data.AppRepository
+import io.muhwyndhamhp.basemodule.data.model.Review
 import io.muhwyndhamhp.moviedb.BuildConfig
-import io.muhwyndhamhp.moviedb.data.AppRepository
-import io.muhwyndhamhp.moviedb.data.model.Review
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+
 
 class ReviewViewModel(private val appRepository: AppRepository) : ViewModel() {
 

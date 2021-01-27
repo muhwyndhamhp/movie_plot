@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.network
+package io.muhwyndhamhp.basemodule.network
 
 data class GeneralResponse<T>(
     val page: Int? = 0,

@@ -1,8 +1,8 @@
-package io.muhwyndhamhp.moviedb.data
+package io.muhwyndhamhp.basemodule.data
 
-import io.muhwyndhamhp.moviedb.data.model.Movie
-import io.muhwyndhamhp.moviedb.local.dao.MovieDao
-import io.muhwyndhamhp.moviedb.network.TMDBApi
+import io.muhwyndhamhp.basemodule.data.model.Movie
+import io.muhwyndhamhp.basemodule.local.dao.MovieDao
+import io.muhwyndhamhp.basemodule.network.TMDBApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 

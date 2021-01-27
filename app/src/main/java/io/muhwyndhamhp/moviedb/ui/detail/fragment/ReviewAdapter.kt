@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.data.model.Review
+import io.muhwyndhamhp.basemodule.data.model.Review
 import io.muhwyndhamhp.moviedb.databinding.ItemReviewBinding
 
 class ReviewAdapter(private val reviewList: List<Review>) :
