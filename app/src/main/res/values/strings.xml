@@ -12,4 +12,10 @@
     <string name="imdb_id">IMDB ID:</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="favourite_movie_floating_action_button">Favourite Movie Floating Action Button</string>
+    <string name="there_is_no_review_yet_npossibly_because_the_movie_isn_t_out_yet">There is no comments yet!\nPossibly because the movie isn\'t out yet.</string>
+    <string name="comments">Comments</string>
+    <string name="information">Information</string>
+    <string name="comment">Comment</string>
+    <string name="empty_nickname">Nickname cannot be empty!</string>
+    <string name="invalid_nickname">Your nickname must at least:\n - 6 characters\n - 1 capital letter</string>
 </resources>

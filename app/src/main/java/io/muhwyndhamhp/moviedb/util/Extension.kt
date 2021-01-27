@@ -7,6 +7,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import io.muhwyndhamhp.moviedb.R
 
 object Extension {
 
@@ -33,12 +34,11 @@ object Extension {
                 when {
                     p0.isNullOrEmpty() -> {
                         isValid = false
-                        reason = "Nickname cannot be empty!"
+                        reason = context.getString(R.string.empty_nickname)
                     }
                     p0.length < 6 || !p0.checkHasUppercase() -> {
                         isValid = false
-                        reason =
-                            "Your nickname must at least:\n - 6 characters\n - 1 capital letter"
+                        reason = context.getString(R.string.invalid_nickname)
                     }
                 }
 

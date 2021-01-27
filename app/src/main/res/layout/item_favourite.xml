@@ -37,7 +37,8 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_banner_foreground"
-                    app:imageUrl="@{movie.poster_path}" />
+                    app:imageUrl="@{movie.poster_path}"
+                    android:contentDescription="@string/movie_poster" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
+import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentMovieDetailBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
@@ -38,8 +39,8 @@ class MovieDetailFragment : BaseFragment() {
         binding.pager.adapter = DetailStateAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Information"
-                else -> "Comment"
+                0 -> getString(R.string.information)
+                else -> getString(R.string.comment)
             }
         }.attach()
 

@@ -24,7 +24,8 @@ interface TMDBApi {
     suspend fun getMovieReviews(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String,
-        @Query("page") page: Int
+        @Query("page") page: Int,
+        @Query("language") language: String = "en"
     ): GeneralResponse<List<Review>>
 
     @GET("movie/{movie_id}")
