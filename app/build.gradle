@@ -10,7 +10,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-    def Properties properties = new Properties()
+    Properties properties = new Properties()
     properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
     defaultConfig {
@@ -71,8 +71,6 @@ dependencies {
     implementation Deps.room
     implementation Deps.roomRuntime
     implementation Deps.legacySupport
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Deps.roomKapt
 
     implementation Deps.glide

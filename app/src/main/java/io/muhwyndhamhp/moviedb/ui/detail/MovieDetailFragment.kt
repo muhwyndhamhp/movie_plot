@@ -21,6 +21,8 @@ class MovieDetailFragment : BaseFragment() {
     private val movieViewModel: MovieViewModel by viewModel()
     private val args: MovieDetailFragmentArgs by navArgs()
 
+    private var isFavourite = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,6 +43,15 @@ class MovieDetailFragment : BaseFragment() {
             }
         }.attach()
 
+        binding.isFavourite = isFavourite
+
+        binding.fabFav.setOnClickListener {
+            if (!isFavourite) movieViewModel.addFavourite(movieViewModel.currentMovie.value)
+            else movieViewModel.removeFavouriteMovie(movieViewModel.currentMovie.value)
+//            isFavourite = !isFavourite
+//            binding.isFavourite = isFavourite
+        }
+
         attachObservers()
         movieViewModel.getDetails(args.movie)
         reviewViewModel.getReviews(args.movie.id)
@@ -48,6 +59,23 @@ class MovieDetailFragment : BaseFragment() {
     }
 
     private fun attachObservers() {
+        movieViewModel.favouriteMovies.observe(viewLifecycleOwner, {
+            if (!it.isNullOrEmpty()) {
+                for (movie in it) {
+                    if (movie.id == movieViewModel.currentMovie.value?.id) {
+                        isFavourite = true
+                        binding.isFavourite = isFavourite
+                        break
+                    } else {
+                        isFavourite = false
+                        binding.isFavourite = isFavourite
+                    }
+                }
+            } else {
+                isFavourite = false
+                binding.isFavourite = isFavourite
+            }
+        })
         movieViewModel.loading.observe(viewLifecycleOwner, { mainViewModel.loading.postValue(it) })
         reviewViewModel.loading.observe(viewLifecycleOwner, { mainViewModel.loading.postValue(it) })
         movieViewModel.error.observe(viewLifecycleOwner, { mainViewModel.error.postValue(it) })

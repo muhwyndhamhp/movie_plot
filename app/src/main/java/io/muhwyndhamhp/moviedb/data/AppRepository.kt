@@ -35,7 +35,7 @@ class AppRepository(
 
     fun getFavouriteMovies() = movieDao.getAllMovies()
 
-    fun insertFavouriteMovie(movie: Movie) = movieDao.insertMovie(movie)
+    fun insertFavouriteMovie(movie: Movie?) = movieDao.insertMovie(movie)
 
-    fun removeFavouriteMovie(movie: Movie) = movieDao.delete(movie)
+    fun removeFavouriteMovie(movie: Movie?) = movieDao.delete(movie)
 }

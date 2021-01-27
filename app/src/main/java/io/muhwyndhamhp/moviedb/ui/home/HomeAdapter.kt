@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.moviedb.data.model.Movie
+import io.muhwyndhamhp.moviedb.databinding.ItemFavouriteBinding
 import io.muhwyndhamhp.moviedb.databinding.ItemPopularMovieBinding
 import io.muhwyndhamhp.moviedb.databinding.ItemUpcomingBinding
 
@@ -38,6 +39,15 @@ class HomeAdapter(
         }
     }
 
+    class FavouriteViewHolder(private val itemFavouriteBinding: ItemFavouriteBinding) :
+        BaseViewHolder(itemFavouriteBinding.root) {
+        override fun bindItem(movie: Movie, position: Int, clickListener: (Movie) -> Unit) {
+            itemFavouriteBinding.movie = movie
+            itemFavouriteBinding.root.setOnClickListener { clickListener.invoke(movie) }
+        }
+
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
 
@@ -54,6 +64,14 @@ class HomeAdapter(
                 DataBindingUtil.inflate(
                     layoutInflater,
                     R.layout.item_upcoming,
+                    parent,
+                    false
+                )
+            )
+            2 -> FavouriteViewHolder(
+                DataBindingUtil.inflate(
+                    layoutInflater,
+                    R.layout.item_favourite,
                     parent,
                     false
                 )
@@ -86,7 +104,7 @@ class HomeAdapter(
     }
 
     fun updateItem(updatedList: List<Movie>) {
-        if (!movieList.isNullOrEmpty() && updatedList[0].id == movieList[0].id) return
+        if (!movieList.isNullOrEmpty() && updatedList.size == movieList.size) return
         movieList = updatedList as MutableList<Movie>
         notifyDataSetChanged()
     }

@@ -15,11 +15,11 @@ class MovieViewModel(private val appRepository: AppRepository) : ViewModel() {
 
     val upcomingMovies = MutableLiveData<List<Movie>>()
 
-    val favouriteMovies: LiveData<List<Movie>?> = liveData {
+    val favouriteMovies: MutableLiveData<List<Movie>?> = liveData {
         val movieMediator = MediatorLiveData<List<Movie>?>()
         emitSource(movieMediator)
         movieMediator.addSource(appRepository.getFavouriteMovies()) { movieMediator.postValue(it) }
-    }
+    } as MutableLiveData<List<Movie>?>
 
     val error = MutableLiveData<String?>(null)
     val loading = MutableLiveData(false)
@@ -76,13 +76,13 @@ class MovieViewModel(private val appRepository: AppRepository) : ViewModel() {
         }
     }
 
-    fun addFavourite(movie: Movie) {
+    fun addFavourite(movie: Movie?) {
         viewModelScope.launch {
             appRepository.insertFavouriteMovie(movie)
         }
     }
 
-    fun removeFavouriteMovie(movie: Movie) {
+    fun removeFavouriteMovie(movie: Movie?) {
         viewModelScope.launch {
             appRepository.removeFavouriteMovie(movie)
         }

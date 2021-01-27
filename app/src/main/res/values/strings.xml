@@ -11,4 +11,5 @@
     <string name="vote">Vote:</string>
     <string name="imdb_id">IMDB ID:</string>
     <string name="movie_poster">Movie Poster</string>
+    <string name="favourite_movie_floating_action_button">Favourite Movie Floating Action Button</string>
 </resources>

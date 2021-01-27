@@ -13,6 +13,8 @@ import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentHomeBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
+import kotlin.concurrent.scheduleAtFixedRate
 
 class HomeFragment : BaseFragment() {
     lateinit var binding: FragmentHomeBinding
@@ -25,6 +27,8 @@ class HomeFragment : BaseFragment() {
 
     private lateinit var navController: NavController
     private lateinit var pagerDecorator: PagerDecorator
+    private var carouselPosition = 0
+    private var timer = Timer()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +58,16 @@ class HomeFragment : BaseFragment() {
             pagerDecorator = PagerDecorator(it.size, context)
             binding.rvPopular.addItemDecoration(pagerDecorator)
             mainViewModel.loading.postValue(false)
+            attachAutoScrollScheduler(it.size)
+        })
+
+        movieViewModel.favouriteMovies.observe(viewLifecycleOwner, {
+            if (!it.isNullOrEmpty()) {
+                binding.hasFavourite = true
+                favouriteAdapter.updateItem(it)
+            } else {
+                binding.hasFavourite = false
+            }
         })
 
         movieViewModel.upcomingMovies.observe(viewLifecycleOwner, {
@@ -82,6 +96,10 @@ class HomeFragment : BaseFragment() {
         }
         PagerSnapHelper().attachToRecyclerView(binding.rvPopular)
 
+        binding.rvFavourite.apply {
+            adapter = favouriteAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
         binding.rvUpcoming.apply {
             adapter = upcomingAdapter
             layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
@@ -89,8 +107,24 @@ class HomeFragment : BaseFragment() {
 
     }
 
+    private fun attachAutoScrollScheduler(itemSize: Int) {
+        timer.cancel()
+        timer.purge()
+        timer = Timer()
+        timer.scheduleAtFixedRate(0, 3000) {
+            this@HomeFragment.activity?.runOnUiThread {
+                binding.rvUpcoming.scrollToPosition(++carouselPosition)
+                if (carouselPosition >= itemSize) carouselPosition = 0
+            }
+        }
+    }
+
     private fun prepareAdapter() {
         popularAdapter = HomeAdapter(mutableListOf(), 0) {
+            navController.navigate(HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(it))
+        }
+
+        favouriteAdapter = HomeAdapter(mutableListOf(), 2) {
             navController.navigate(HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(it))
         }
 
