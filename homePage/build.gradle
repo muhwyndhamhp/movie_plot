@@ -1,35 +1,30 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.dynamic-feature'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
-    id 'kotlin-parcelize'
 }
-
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
-
     defaultConfig {
-        applicationId "io.muhwyndhamhp.moviedb"
+        applicationId "io.muhwyndhamhp.homepage"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode Versions.versionCode
         versionName Versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
-        buildConfigField("String", "TMDB_ASSET_BASE_URL", imageBaseUrl)
-        buildConfigField("String", "TMDB_BASE_URL", baseUrl)
     }
 
     buildFeatures {
         dataBinding true
         viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 
     buildTypes {
@@ -38,32 +33,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    dynamicFeatures = [':splashPage', ':onboardingPage', ':homePage', ':detailPage']
-
-    configurations.all {
-        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
-        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
-    }
 
 }
 
 dependencies {
 
-    implementation project(':baseModule')
+    implementation project(':app')
 
     implementation project(':baseView')
 
+    implementation project(':baseModule')
+
     implementation Deps.stdLibs
     implementation Deps.androidxCore
-    implementation Deps.appCompat
-    implementation Deps.material
     implementation Deps.constraintLayout
 
     implementation Deps.koin
@@ -73,9 +55,6 @@ dependencies {
     implementation Deps.jetpackNavigationUI
     implementation Deps.jetpackNavigationFragment
     implementation Deps.jetpackNavigationDynamicModule
-
-    implementation Deps.liveData
-    implementation Deps.legacySupport
 
     implementation Deps.glide
     kapt Deps.glideKapt

@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.ui.home
+package io.muhwyndhamhp.homepage
 
 import android.content.Context
 import android.graphics.Canvas

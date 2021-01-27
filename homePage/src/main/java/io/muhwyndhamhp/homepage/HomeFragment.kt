@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.ui.home
+package io.muhwyndhamhp.homepage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import io.muhwyndhamhp.moviedb.databinding.FragmentHomeBinding
+import io.muhwyndhamhp.homepage.databinding.FragmentHomeBinding
 import io.muhwyndhamhp.moviedb.util.Extension.updateVisibleItem
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

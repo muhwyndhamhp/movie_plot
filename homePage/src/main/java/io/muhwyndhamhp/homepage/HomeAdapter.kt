@@ -1,15 +1,14 @@
-package io.muhwyndhamhp.moviedb.ui.home
+package io.muhwyndhamhp.homepage
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.basemodule.data.model.Movie
-import io.muhwyndhamhp.moviedb.databinding.ItemFavouriteBinding
-import io.muhwyndhamhp.moviedb.databinding.ItemPopularMovieBinding
-import io.muhwyndhamhp.moviedb.databinding.ItemUpcomingBinding
+import io.muhwyndhamhp.homepage.databinding.ItemFavouriteBinding
+import io.muhwyndhamhp.homepage.databinding.ItemPopularMovieBinding
+import io.muhwyndhamhp.homepage.databinding.ItemUpcomingBinding
 
 class HomeAdapter(
     private var movieList: MutableList<Movie>,

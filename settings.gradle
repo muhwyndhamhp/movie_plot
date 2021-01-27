@@ -1,3 +1,5 @@
+include ':detailPage'
+include ':homePage'
 include ':onboardingPage'
 include ':splashPage'
 include ':baseView'
