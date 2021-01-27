@@ -5,8 +5,20 @@ import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 object Extension {
+
+    fun RecyclerView.updateVisibleItem(listener: (Int) -> Unit) {
+        this.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                val layoutManager = this@updateVisibleItem.layoutManager as LinearLayoutManager
+                listener.invoke(layoutManager.findFirstCompletelyVisibleItemPosition())
+            }
+        })
+    }
 
     fun EditText.assertNickName(assert: (isValid: Boolean, reason: String?) -> Unit) {
         this.addTextChangedListener(object : TextWatcher {

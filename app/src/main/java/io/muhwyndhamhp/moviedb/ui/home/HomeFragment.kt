@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentHomeBinding
+import io.muhwyndhamhp.moviedb.util.Extension.updateVisibleItem
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -98,6 +99,7 @@ class HomeFragment : BaseFragment() {
         binding.rvPopular.apply {
             adapter = popularAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            updateVisibleItem { carouselPosition = it}
         }
         PagerSnapHelper().attachToRecyclerView(binding.rvPopular)
 
@@ -114,7 +116,7 @@ class HomeFragment : BaseFragment() {
 
     private fun attachAutoScrollScheduler(itemSize: Int) {
         resetTimer(true)
-        timer?.scheduleAtFixedRate(0, 3000) {
+        timer?.scheduleAtFixedRate(0, 2000) {
             this@HomeFragment.activity?.runOnUiThread {
                 binding.rvPopular.smoothScrollToPosition(carouselPosition++)
                 if (carouselPosition >= itemSize) carouselPosition = 0

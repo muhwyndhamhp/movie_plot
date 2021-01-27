@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import io.muhwyndhamhp.moviedb.viewmodel.MainViewModel
 import io.muhwyndhamhp.moviedb.databinding.ActivityMainBinding
 import io.muhwyndhamhp.moviedb.util.Constants.USER_NAME_KEY
 import io.muhwyndhamhp.moviedb.util.Constants.USER_PREF
+import io.muhwyndhamhp.moviedb.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -39,7 +39,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainViewModel.error.observe(this, {
-            if (it != null) Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            if (it != null && !it.contains("timeout")) Snackbar.make(
+                binding.root,
+                it,
+                Snackbar.LENGTH_SHORT
+            ).show()
         })
 
         mainViewModel.savableUsername.observe(this, {
