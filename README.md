@@ -6,29 +6,29 @@ For obvious security reason, I won't include TMDB's Api Key inside this project.
 
 There are 2 methods to achieve this :
 
-- ***Via ```local.properties``` (Recommended)***
+## ***Via ```local.properties``` (Recommended)***
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you clone this project and opening it in Android Studio, Gradle will generate ```local.properties``` file which would be automatically excluded from Git. open this file and add code below:
-
-```
-tmdbApiKey="<Your Api Key V3 Here>"
-```
-
-- ***Via ```gradle.properties```***
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If local.properties were not generated, you can add the Api Key via ```gradle.properties``` file. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First open the ```gradle.properties``` file and add code below:
+Once you clone this project and opening it in Android Studio, Gradle will generate ```local.properties``` file which would be automatically excluded from Git. open this file and add code below:
 
 ```
 tmdbApiKey="<Your Api Key V3 Here>"
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Then open ```\app\build.gradle``` and replace this line :
+## ***Via ```gradle.properties```***
+
+If local.properties were not generated, you can add the Api Key via ```gradle.properties``` file. 
+
+First open the ```gradle.properties``` file and add code below:
+
+```
+tmdbApiKey="<Your Api Key V3 Here>"
+```
+
+Then open ```\app\build.gradle``` and replace this line :
 ```
 buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with this :
+with this :
 ```
 buildConfigField("String", "TMDB_API_KEY", tmdbApiKey)
 ```
