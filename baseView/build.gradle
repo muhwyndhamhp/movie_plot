@@ -7,9 +7,6 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
-
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
@@ -18,10 +15,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-
-        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
-        buildConfigField("String", "TMDB_ASSET_BASE_URL", imageBaseUrl)
-        buildConfigField("String", "TMDB_BASE_URL", baseUrl)
     }
 
     buildTypes {
