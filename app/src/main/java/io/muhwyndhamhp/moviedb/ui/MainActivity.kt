@@ -8,14 +8,14 @@ import com.google.android.material.snackbar.Snackbar
 import io.muhwyndhamhp.moviedb.databinding.ActivityMainBinding
 import io.muhwyndhamhp.moviedb.util.Constants.USER_NAME_KEY
 import io.muhwyndhamhp.moviedb.util.Constants.USER_PREF
-import io.muhwyndhamhp.moviedb.viewmodel.MainViewModel
+import io.muhwyndhamhp.baseview.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
 
 
-    private val mainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: io.muhwyndhamhp.baseview.MainViewModel by viewModel()
 
     lateinit var binding: ActivityMainBinding
 

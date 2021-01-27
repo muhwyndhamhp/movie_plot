@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.viewmodel
+package io.muhwyndhamhp.baseview
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

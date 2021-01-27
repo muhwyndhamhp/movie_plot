@@ -5,12 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentReviewBinding
 import io.muhwyndhamhp.moviedb.viewmodel.ReviewViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
-class ReviewFragment : BaseFragment() {
+class ReviewFragment : io.muhwyndhamhp.baseview.BaseFragment() {
     lateinit var binding: FragmentReviewBinding
 
     private val reviewViewModel by lazy {
@@ -30,11 +29,12 @@ class ReviewFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         reviewViewModel.reviews.observe(viewLifecycleOwner, {
-            if(!it.isNullOrEmpty()){
+            if (!it.isNullOrEmpty()) {
                 binding.isHasReview = true
                 binding.rvReview.apply {
                     adapter = ReviewAdapter(it)
-                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    layoutManager =
+                        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 }
             } else {
                 binding.isHasReview = false

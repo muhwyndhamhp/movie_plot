@@ -9,10 +9,9 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import io.muhwyndhamhp.moviedb.BuildConfig
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentSplashBinding
 
-class SplashFragment : BaseFragment() {
+class SplashFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 
     lateinit var binding: FragmentSplashBinding
 

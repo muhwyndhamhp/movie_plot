@@ -9,7 +9,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentHomeBinding
 import io.muhwyndhamhp.moviedb.util.Extension.updateVisibleItem
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
@@ -17,7 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 
-class HomeFragment : BaseFragment() {
+class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
     lateinit var binding: FragmentHomeBinding
 
     private val movieViewModel: MovieViewModel by viewModel()
@@ -99,7 +98,7 @@ class HomeFragment : BaseFragment() {
         binding.rvPopular.apply {
             adapter = popularAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            updateVisibleItem { carouselPosition = it}
+            updateVisibleItem { carouselPosition = it }
         }
         PagerSnapHelper().attachToRecyclerView(binding.rvPopular)
 
@@ -118,7 +117,7 @@ class HomeFragment : BaseFragment() {
         resetTimer(true)
         timer?.scheduleAtFixedRate(0, 3000) {
             this@HomeFragment.activity?.runOnUiThread {
-                if (carouselPosition >= itemSize-1) carouselPosition = -1
+                if (carouselPosition >= itemSize - 1) carouselPosition = -1
                 binding.rvPopular.smoothScrollToPosition(++carouselPosition)
             }
         }

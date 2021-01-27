@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentInformationBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 
-class InformationFragment : BaseFragment() {
+class InformationFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 
     lateinit var binding: FragmentInformationBinding
 

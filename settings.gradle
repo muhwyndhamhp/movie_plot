@@ -1,3 +1,4 @@
+include ':baseView'
 include ':baseModule'
 include ':app'
 rootProject.name = "MovieDB"

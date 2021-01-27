@@ -7,6 +7,6 @@ object ViewModelModule {
     val viewModelModule = module {
         viewModel { MovieViewModel(get()) }
         viewModel { ReviewViewModel(get()) }
-        viewModel { MainViewModel() }
+        viewModel { io.muhwyndhamhp.baseview.MainViewModel() }
     }
 }

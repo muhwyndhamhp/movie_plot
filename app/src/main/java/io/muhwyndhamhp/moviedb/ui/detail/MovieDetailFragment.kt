@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentMovieDetailBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import io.muhwyndhamhp.moviedb.viewmodel.ReviewViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MovieDetailFragment : BaseFragment() {
+class MovieDetailFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 
     lateinit var binding: FragmentMovieDetailBinding
 

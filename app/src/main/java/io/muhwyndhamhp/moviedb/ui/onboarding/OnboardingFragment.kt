@@ -6,13 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.base.BaseFragment
 import io.muhwyndhamhp.moviedb.databinding.FragmentOnboardingBinding
 import io.muhwyndhamhp.moviedb.util.Extension.assertNickName
 import io.muhwyndhamhp.moviedb.util.Extension.onReturnKey
 
 
-class OnboardingFragment : BaseFragment() {
+class OnboardingFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 
     lateinit var binding: FragmentOnboardingBinding
     var isInputValid = false
@@ -32,7 +31,8 @@ class OnboardingFragment : BaseFragment() {
         attachEditTextObserver()
         binding.layoutInteractiveButton.btContinue.setOnClickListener {
             mainViewModel.savableUsername.postValue(finalizedNickname)
-            Navigation.findNavController(binding.root).navigate(R.id.action_onboardingFragment_to_homeFragment)
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.action_onboardingFragment_to_homeFragment)
         }
     }
 
