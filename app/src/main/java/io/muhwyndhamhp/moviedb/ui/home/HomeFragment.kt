@@ -113,7 +113,7 @@ class HomeFragment : BaseFragment() {
         timer = Timer()
         timer.scheduleAtFixedRate(0, 3000) {
             this@HomeFragment.activity?.runOnUiThread {
-                binding.rvUpcoming.scrollToPosition(++carouselPosition)
+                binding.rvPopular.smoothScrollToPosition(carouselPosition++)
                 if (carouselPosition >= itemSize) carouselPosition = 0
             }
         }
