@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.ui.splash
+package io.muhwyndhamhp.splashpage
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import io.muhwyndhamhp.moviedb.BuildConfig
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.databinding.FragmentSplashBinding
+import io.muhwyndhamhp.splashpage.databinding.FragmentSplashBinding
 
 class SplashFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 

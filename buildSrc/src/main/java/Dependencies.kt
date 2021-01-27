@@ -61,6 +61,7 @@ object Deps {
     //Navigation
     const val jetpackNavigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.jetpack_navigation}"
     const val jetpackNavigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.jetpack_navigation}"
+    const val jetpackNavigationDynamicModule = "androidx.navigation:navigation-dynamic-features-fragment:${Versions.jetpack_navigation}"
 
     //JUnit
     const val jUnit = "junit:junit:${Versions.j_unit}"

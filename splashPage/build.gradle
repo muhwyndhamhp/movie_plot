@@ -1,11 +1,7 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.dynamic-feature'
     id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs'
-    id 'kotlin-parcelize'
 }
-
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -14,7 +10,7 @@ android {
     properties.load(project.rootProject.file("local.properties").newDataInputStream())
 
     defaultConfig {
-        applicationId "io.muhwyndhamhp.moviedb"
+        applicationId "io.muhwyndhamhp.splashpage"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode Versions.versionCode
@@ -32,53 +28,33 @@ android {
         viewBinding true
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    dynamicFeatures = [':splashPage']
-
-    configurations.all {
-        resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"
-        resolutionStrategy.force "org.antlr:antlr4-tool:4.7.1"
-    }
 
 }
 
 dependencies {
 
-    implementation project(':baseModule')
+    implementation project(':app')
 
     implementation project(':baseView')
 
     implementation Deps.stdLibs
     implementation Deps.androidxCore
-    implementation Deps.appCompat
-    implementation Deps.material
     implementation Deps.constraintLayout
-
-    implementation Deps.koin
-    implementation Deps.koinLifecycle
-    implementation Deps.koinViewModel
 
     implementation Deps.jetpackNavigationUI
     implementation Deps.jetpackNavigationFragment
     implementation Deps.jetpackNavigationDynamicModule
-
-    implementation Deps.liveData
-    implementation Deps.legacySupport
-
-    implementation Deps.glide
-    kapt Deps.glideKapt
 
     testImplementation Deps.jUnit
     androidTestImplementation Deps.jUnitTest

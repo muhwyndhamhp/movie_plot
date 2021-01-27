@@ -1,3 +1,4 @@
+include ':splashPage'
 include ':baseView'
 include ':baseModule'
 include ':app'
