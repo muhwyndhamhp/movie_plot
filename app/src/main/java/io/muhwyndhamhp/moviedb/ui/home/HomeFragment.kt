@@ -116,10 +116,10 @@ class HomeFragment : BaseFragment() {
 
     private fun attachAutoScrollScheduler(itemSize: Int) {
         resetTimer(true)
-        timer?.scheduleAtFixedRate(0, 2000) {
+        timer?.scheduleAtFixedRate(0, 3000) {
             this@HomeFragment.activity?.runOnUiThread {
-                binding.rvPopular.smoothScrollToPosition(carouselPosition++)
-                if (carouselPosition >= itemSize) carouselPosition = 0
+                if (carouselPosition >= itemSize-1) carouselPosition = -1
+                binding.rvPopular.smoothScrollToPosition(++carouselPosition)
             }
         }
     }
