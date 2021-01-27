@@ -19,4 +19,5 @@
     <string name="empty_nickname">Nickname cannot be empty!</string>
     <string name="invalid_nickname">Your nickname must at least:\n - 6 characters\n - 1 capital letter</string>
     <string name="title_splashpage">Splash Page</string>
+    <string name="title_onboardingpage">Onboarding Page</string>
 </resources>

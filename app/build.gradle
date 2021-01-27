@@ -45,7 +45,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dynamicFeatures = [':splashPage']
+    dynamicFeatures = [':splashPage', ':onboardingPage']
 
     configurations.all {
         resolutionStrategy.force "org.antlr:antlr4-runtime:4.7.1"

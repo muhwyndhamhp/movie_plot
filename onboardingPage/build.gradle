@@ -7,21 +7,14 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
-
     defaultConfig {
-        applicationId "io.muhwyndhamhp.splashpage"
+        applicationId "io.muhwyndhamhp.onboardingpage"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode Versions.versionCode
         versionName Versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", ""))
-        buildConfigField("String", "TMDB_ASSET_BASE_URL", imageBaseUrl)
-        buildConfigField("String", "TMDB_BASE_URL", baseUrl)
     }
 
     buildFeatures {
@@ -40,11 +33,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
-
     implementation project(':app')
 
     implementation project(':baseView')

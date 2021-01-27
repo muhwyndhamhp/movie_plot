@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.ui.onboarding
+package io.muhwyndhamhp.onboardingpage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.databinding.FragmentOnboardingBinding
 import io.muhwyndhamhp.moviedb.util.Extension.assertNickName
 import io.muhwyndhamhp.moviedb.util.Extension.onReturnKey
+import io.muhwyndhamhp.onboardingpage.databinding.FragmentOnboardingBinding
 
 
 class OnboardingFragment : io.muhwyndhamhp.baseview.BaseFragment() {

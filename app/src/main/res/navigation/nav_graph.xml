@@ -33,7 +33,8 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="io.muhwyndhamhp.moviedb.ui.onboarding.OnboardingFragment"
+        app:moduleName="onboardingPage"
+        android:name="io.muhwyndhamhp.onboardingpage.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding">
         <action

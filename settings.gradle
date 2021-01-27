@@ -1,3 +1,4 @@
+include ':onboardingPage'
 include ':splashPage'
 include ':baseView'
 include ':baseModule'
