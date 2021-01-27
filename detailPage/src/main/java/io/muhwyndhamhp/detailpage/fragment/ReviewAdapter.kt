@@ -1,12 +1,12 @@
-package io.muhwyndhamhp.moviedb.ui.detail.fragment
+package io.muhwyndhamhp.detailpage.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import io.muhwyndhamhp.moviedb.R
 import io.muhwyndhamhp.basemodule.data.model.Review
-import io.muhwyndhamhp.moviedb.databinding.ItemReviewBinding
+import io.muhwyndhamhp.detailpage.R
+import io.muhwyndhamhp.detailpage.databinding.ItemReviewBinding
 
 class ReviewAdapter(private val reviewList: List<Review>) :
     RecyclerView.Adapter<ReviewAdapter.ViewHolder>() {

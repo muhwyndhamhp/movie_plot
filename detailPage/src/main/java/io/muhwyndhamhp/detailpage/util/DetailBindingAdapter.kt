@@ -1,13 +1,13 @@
-package io.muhwyndhamhp.moviedb.util
+package io.muhwyndhamhp.detailpage.util
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import io.muhwyndhamhp.moviedb.BuildConfig
 import io.muhwyndhamhp.moviedb.R
+import io.muhwyndhamhp.moviedb.BuildConfig
 
-object BindingAdapter {
+object DetailBindingAdapter {
 
     @BindingAdapter("app:imageUrl")
     @JvmStatic
@@ -19,7 +19,7 @@ object BindingAdapter {
 
     @BindingAdapter("app:setFavouriteIcon")
     @JvmStatic
-    fun setFavouriteIcon(view: FloatingActionButton, isFavourite: Boolean) {
-        view.setImageResource(if (isFavourite) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24)
+    fun setFavouriteIcon(view: FloatingActionButton, isFavourite: Boolean?) {
+        view.setImageResource(if (isFavourite == true) R.drawable.ic_baseline_favorite_24 else R.drawable.ic_baseline_favorite_border_24)
     }
 }

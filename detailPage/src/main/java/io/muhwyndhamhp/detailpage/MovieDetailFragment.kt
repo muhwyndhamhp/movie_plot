@@ -1,4 +1,4 @@
-package io.muhwyndhamhp.moviedb.ui.detail
+package io.muhwyndhamhp.detailpage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
+import io.muhwyndhamhp.detailpage.databinding.FragmentMovieDetailBinding
 import io.muhwyndhamhp.moviedb.R
-import io.muhwyndhamhp.moviedb.databinding.FragmentMovieDetailBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import io.muhwyndhamhp.moviedb.viewmodel.ReviewViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

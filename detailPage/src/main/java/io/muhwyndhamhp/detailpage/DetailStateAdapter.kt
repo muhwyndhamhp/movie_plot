@@ -1,9 +1,9 @@
-package io.muhwyndhamhp.moviedb.ui.detail
+package io.muhwyndhamhp.detailpage
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import io.muhwyndhamhp.moviedb.ui.detail.fragment.InformationFragment
-import io.muhwyndhamhp.moviedb.ui.detail.fragment.ReviewFragment
+import io.muhwyndhamhp.detailpage.fragment.InformationFragment
+import io.muhwyndhamhp.detailpage.fragment.ReviewFragment
 
 class DetailStateAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
     override fun getItemCount() = 2

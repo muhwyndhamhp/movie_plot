@@ -46,7 +46,8 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="io.muhwyndhamhp.moviedb.ui.detail.MovieDetailFragment"
+        app:moduleName="detailPage"
+        android:name="io.muhwyndhamhp.detailpage.MovieDetailFragment"
         android:label="fragment_movie_detail"
         tools:layout="@layout/fragment_movie_detail">
         <argument

@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.dynamic-feature'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs'
 }
 android {
     compileSdkVersion 30
@@ -10,26 +13,58 @@ android {
         applicationId "io.muhwyndhamhp.detailpage"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode Versions.versionCode
+        versionName Versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
-    implementation project(":app")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+
+    implementation project(':app')
+
+    implementation project(':baseView')
+
+    implementation project(':baseModule')
+
+    implementation Deps.stdLibs
+    implementation Deps.androidxCore
+    implementation Deps.constraintLayout
+
+    implementation Deps.koin
+    implementation Deps.koinLifecycle
+    implementation Deps.koinViewModel
+
+    implementation Deps.jetpackNavigationUI
+    implementation Deps.jetpackNavigationFragment
+    implementation Deps.jetpackNavigationDynamicModule
+
+    implementation Deps.glide
+    kapt Deps.glideKapt
+
+    testImplementation Deps.jUnit
+    androidTestImplementation Deps.jUnitTest
+    androidTestImplementation Deps.espresso
 }

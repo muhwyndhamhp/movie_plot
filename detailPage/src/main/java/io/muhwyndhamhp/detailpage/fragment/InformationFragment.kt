@@ -1,10 +1,10 @@
-package io.muhwyndhamhp.moviedb.ui.detail.fragment
+package io.muhwyndhamhp.detailpage.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.muhwyndhamhp.moviedb.databinding.FragmentInformationBinding
+import io.muhwyndhamhp.detailpage.databinding.FragmentInformationBinding
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 

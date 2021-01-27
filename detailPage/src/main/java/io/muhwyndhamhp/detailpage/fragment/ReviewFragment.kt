@@ -1,11 +1,11 @@
-package io.muhwyndhamhp.moviedb.ui.detail.fragment
+package io.muhwyndhamhp.detailpage.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import io.muhwyndhamhp.moviedb.databinding.FragmentReviewBinding
+import io.muhwyndhamhp.detailpage.databinding.FragmentReviewBinding
 import io.muhwyndhamhp.moviedb.viewmodel.ReviewViewModel
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
