@@ -33,6 +33,8 @@ buildConfigField("String", "TMDB_API_KEY", properties.getProperty("tmdbApiKey", 
 buildConfigField("String", "TMDB_API_KEY", tmdbApiKey)
 ```
 
+***PLEASE DON'T COMMIT ```gradle.properties``` FILE INTO REPOSITORY OR YOUR API KEY WILL LEAK***
+
 # About App
 
 App for consuming The Movie DB's API (TMDB). Using several technology stacks for Android Development such as:
