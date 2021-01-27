@@ -30,7 +30,7 @@ class InformationFragment : io.muhwyndhamhp.baseview.BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         movieViewModel.currentMovie.observe(viewLifecycleOwner, {
             binding.movie = it
-            mainViewModel.loading.postValue(false)
+            mainViewModel.setLoadingState(false)
         })
     }
 }

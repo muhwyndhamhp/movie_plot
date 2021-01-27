@@ -62,7 +62,7 @@ class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
             )
             pagerDecorator = PagerDecorator(it.size, context)
             binding.rvPopular.addItemDecoration(pagerDecorator)
-            mainViewModel.loading.postValue(false)
+            mainViewModel.setLoadingState(false)
             attachAutoScrollScheduler(it.size)
         })
 
@@ -77,7 +77,7 @@ class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 
         movieViewModel.upcomingMovies.observe(viewLifecycleOwner, {
             upcomingAdapter.updateItem(it)
-            mainViewModel.loading.postValue(false)
+            mainViewModel.setLoadingState(false)
         })
 
         mainViewModel.userName.observe(viewLifecycleOwner, {
@@ -85,11 +85,11 @@ class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
         })
 
         movieViewModel.loading.observe(viewLifecycleOwner, {
-            mainViewModel.loading.postValue(it)
+            mainViewModel.setLoadingState(it)
         })
 
         movieViewModel.error.observe(viewLifecycleOwner, {
-            mainViewModel.error.postValue(it)
+            mainViewModel.setErrorState(it)
         })
     }
 

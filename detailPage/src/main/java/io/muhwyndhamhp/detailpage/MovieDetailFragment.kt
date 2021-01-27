@@ -76,9 +76,9 @@ class MovieDetailFragment : io.muhwyndhamhp.baseview.BaseFragment() {
                 binding.isFavourite = isFavourite
             }
         })
-        movieViewModel.loading.observe(viewLifecycleOwner, { mainViewModel.loading.postValue(it) })
-        reviewViewModel.loading.observe(viewLifecycleOwner, { mainViewModel.loading.postValue(it) })
-        movieViewModel.error.observe(viewLifecycleOwner, { mainViewModel.error.postValue(it) })
-        reviewViewModel.error.observe(viewLifecycleOwner, { mainViewModel.error.postValue(it) })
+        movieViewModel.loading.observe(viewLifecycleOwner, { mainViewModel.setLoadingState(it) })
+        reviewViewModel.loading.observe(viewLifecycleOwner, { mainViewModel.setLoadingState(it) })
+        movieViewModel.error.observe(viewLifecycleOwner, { mainViewModel.setErrorState(it) })
+        reviewViewModel.error.observe(viewLifecycleOwner, { mainViewModel.setErrorState(it) })
     }
 }
