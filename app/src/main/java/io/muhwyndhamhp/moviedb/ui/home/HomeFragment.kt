@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment() {
     private lateinit var navController: NavController
     private lateinit var pagerDecorator: PagerDecorator
     private var carouselPosition = 0
-    private var timer = Timer()
+    private var timer: Timer? = Timer()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +47,11 @@ class HomeFragment : BaseFragment() {
         navController = Navigation.findNavController(binding.root)
         movieViewModel.getPopular()
         movieViewModel.getUpcoming()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        resetTimer()
     }
 
     private fun prepareObservers() {
@@ -108,15 +113,19 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun attachAutoScrollScheduler(itemSize: Int) {
-        timer.cancel()
-        timer.purge()
-        timer = Timer()
-        timer.scheduleAtFixedRate(0, 3000) {
+        resetTimer(true)
+        timer?.scheduleAtFixedRate(0, 3000) {
             this@HomeFragment.activity?.runOnUiThread {
                 binding.rvPopular.smoothScrollToPosition(carouselPosition++)
                 if (carouselPosition >= itemSize) carouselPosition = 0
             }
         }
+    }
+
+    private fun resetTimer(reattach: Boolean = false) {
+        timer?.cancel()
+        timer?.purge()
+        timer = if (reattach) Timer() else null
     }
 
     private fun prepareAdapter() {
