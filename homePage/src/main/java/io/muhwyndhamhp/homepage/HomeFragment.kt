@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import io.muhwyndhamhp.homepage.databinding.FragmentHomeBinding
+import io.muhwyndhamhp.moviedb.util.Constants.TICKER_REPEAT
 import io.muhwyndhamhp.moviedb.util.Extension.updateVisibleItem
 import io.muhwyndhamhp.moviedb.viewmodel.MovieViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.channels.ticker
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
-import kotlin.concurrent.scheduleAtFixedRate
 
 class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
     lateinit var binding: FragmentHomeBinding
@@ -29,6 +32,7 @@ class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
     private lateinit var pagerDecorator: PagerDecorator
     private var carouselPosition = 0
     private var timer: Timer? = Timer()
+    private var ticker = ticker(3000, 0)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +55,7 @@ class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
 
     override fun onPause() {
         super.onPause()
-        resetTimer()
+        resetTicker()
     }
 
     private fun prepareObservers() {
@@ -114,19 +118,20 @@ class HomeFragment : io.muhwyndhamhp.baseview.BaseFragment() {
     }
 
     private fun attachAutoScrollScheduler(itemSize: Int) {
-        resetTimer(true)
-        timer?.scheduleAtFixedRate(0, 3000) {
-            this@HomeFragment.activity?.runOnUiThread {
+       resetTicker(true)
+        GlobalScope.launch {
+            repeat(TICKER_REPEAT) {
+                ticker.receive()
                 if (carouselPosition >= itemSize - 1) carouselPosition = -1
                 binding.rvPopular.smoothScrollToPosition(++carouselPosition)
             }
         }
     }
 
-    private fun resetTimer(reattach: Boolean = false) {
-        timer?.cancel()
-        timer?.purge()
-        timer = if (reattach) Timer() else null
+
+    private fun resetTicker(reattach: Boolean = false) {
+        ticker.cancel()
+        if(reattach) ticker = ticker(3000, 0)
     }
 
     private fun prepareAdapter() {
